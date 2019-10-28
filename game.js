@@ -1,3 +1,5 @@
+let score = 0; // does this belong in game.js?
+
 class Game {
   constructor() {
     // console.log('game constructor');
@@ -20,45 +22,42 @@ class Game {
     this.player.setup();
   }
 
+  isCollision(trash, player) {
+    console.log(
+      trash.x,
+      trash.x + trash.width,
+      player.x,
+      player.x + player.width
+    );
+    if (
+      trash.y > player.y &&
+      (trash.x > player.x && trash.x + trash.width < player.x + player.width)
+    ) {
+      console.log("IN");
+      return true;
+    }
+    return false;
+  }
+
   draw() {
     this.background.draw();
     this.player.draw();
     if (frameCount > 300 && frameCount % 120 === 0) {
-      // how come after 5 sec my player stops moving
-      this.trashes.push(new Trash());
+      if (!this.trashes.length) this.trashes.push(new Trash());
     }
-    this.trashes.forEach(
-        (trash, index) => {
+    this.trashes.forEach((trash, index) => {
       trash.draw();
+      this.isCollision(trash, this.player);
 
       if (trash.y + 150 > windowHeight) {
         this.trashes.splice(index, 1); // removes 1 elem
         console.log("removed");
       }
-      if (this.isCollision(trash, this.player)){
-           console.log("YAY");
-      }
-     }
-    );
-  }
-  isCollision(trash, player){
-    //   if (trash.x + trash.width < player.x || player.x + trash.width < trash.x)
-    //   {
-    //       return false;
-    //   }
-    //   if (trash.y > player.y + player.height || player.y > trash.y + trash.height){
-    //       return false;
-    //   }
-    //   return true;
-    if (player.y + player.height > trash.y ||
-        trash.y + player.height > player.y) {
-            return false;
+        if (this.isCollision(trash, this.player)) {
+          this.trashes.splice(index, 1);
+          console.log(score++);
+          
         }
-        if (player.x < trash.x + trash.width ||
-            trash.x < player.x + player.width) {
-                return false;
-            }
-    return true;
+    });
   }
 }
- 

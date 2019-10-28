@@ -6,6 +6,8 @@
 class Player {
   constructor() {
     this.x = 100;
+    this.y = 550;
+    this.width = 100;
   }
 
   preload() {
