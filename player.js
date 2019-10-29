@@ -2,22 +2,28 @@
 // let side = 20; // ??
 // let x = 0;
 // let y = 0;
+var players = [];
+// var colors = [];
 
 class Player {
   constructor() {
     this.x = 100;
     this.y = 550;
     this.width = 100;
+    this.colors = ["yellow", "black", "brown"];
+    this.selectedColor = 0;
+    this.img = [];
   }
 
   preload() {
-    this.player = loadImage("assets/biotonne.png");
+    for (var i = 0; i < 3; i++) {
+      this.img[i] = loadImage("assets/bin" + i + ".png"); 
+    }
   }
-
   setup() {}
 
   draw() {
-    image(this.player, this.x, 550, 100, 150); // could make x location random later
+    image(this.img[this.selectedColor], this.x, 550, 100, 150); // could make x location random later
   }
 
   moveRight() {
@@ -29,5 +35,9 @@ class Player {
     if (this.x > 0) {
       this.x -= 50;
     }
+  }
+
+  changeColor() {
+    this.selectedColor = (this.selectedColor + 1) % this.colors.length;
   }
 }

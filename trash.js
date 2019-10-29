@@ -1,41 +1,41 @@
 let object = [
   { name: "apple", category: "bio", imgURL: "assets/apple.png" },
-  { name: "banana", category: "bio" },
-  { name: "broccoli", category: "bio" },
-  { name: "bottle", category: "plastic" },
-  { name: "laundry", category: "plastic" },
-  { name: "spray", category: "plastic" },
-  { name: "shoe", category: "none" },
-  { name: "lightbulb", category: "none" },
-  { name: "tp", category: "none" }
+  { name: "banana", category: "bio", imgURL: "assets/banana.png" },
+  { name: "broccoli", category: "bio", imgURL: "assets/broccoli.png" },
+  { name: "bottle", category: "plastic", imgURL: "assets/bottle.png" },
+  { name: "laundry", category: "plastic", imgURL: "assets/laundry.svg" },
+  { name: "spray", category: "plastic", imgURL: "assets/spray.png" },
+  { name: "shoe", category: "none", imgURL: "assets/shoe.png" },
+  { name: "lightbulb", category: "none", imgURL: "assets/lightbulb.png" },
+  { name: "tp", category: "none", imgURL: "assets/tp.png" }
 ];
 
 class Trash {
   constructor() {
     this.x = Math.random() * 1000;
     this.y = 0;
-    this.width = 20;
-    this.height = 20;
+    this.width = 40;
+    this.height = 40;
+
+    this.randomTrash = object[Math.floor(Math.random() * object.length)]; // random from object
+    this.name = this.randomTrash.name;
+    this.category = this.randomTrash.category;
+    this.imgUrl = this.randomTrash.imgURL;
+    // console.log(this.category);
   }
 
   preload() {
-    // this.object[0] = loadImage("assets/apple.png");
-    // this.object[1] = loadImage("assets/banana.png");
-    // this.object[2] = loadImage("assets/broccoli.png");
-    // this.object[3] = loadImage("assets/bottle.jpg");
-    // this.object[4] = loadImage("assets/laundry.svg");
-    // this.object[5] = loadImage("assets/spray.png");
-    // this.object[6] = loadImage("assets/tp.png");
-    this.img = loadImage(object[0].imgURL);
-    console.log(this.img);
+    console.log("img", this.imgUrl);
+    this.img = loadImage(this.imgUrl);
   }
 
   setup() {}
 
   draw() {
+    // console.log(this.img);
     this.y++;
-    rect(this.x, this.y, this.width, this.height);
-    // Image(this.img, this.y, 10, 10);
+
+    image(this.img, this.x, this.y, this.width, this.height);
   }
 }
 
