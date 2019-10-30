@@ -25,7 +25,7 @@ class Trash {
   }
 
   preload() {
-    console.log("img", this.imgUrl);
+    // console.log("img", this.imgUrl);
     this.img = loadImage(this.imgUrl);
   }
 
@@ -33,9 +33,12 @@ class Trash {
 
   draw() {
     // console.log(this.img);
-    this.y++;
+    if (this.y > 650) {
+      this.y = 650;
+    } else {
+      this.y++;
+    }
 
     image(this.img, this.x, this.y, this.width, this.height);
   }
 }
-

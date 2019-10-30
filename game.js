@@ -1,14 +1,13 @@
 let score = 0; // can I make into this.score and move into game constructor? asking for a friend
 let missed = 0;
 
-
 class Game {
   constructor() {
     // console.log('game constructor');
     this.background = new Background();
     this.player = new Player();
     this.trash = new Trash();
-    // this.floor; 
+    // this.floor;
     this.trashes = [];
   }
 
@@ -24,12 +23,13 @@ class Game {
   }
 
   isFloorCollision(trash, floorT) {
-    console.log(trash.y, trash.height);
+    // console.log(trash.y, trash.height);
 
-    return trash.y + trash.height >= floorT;
+    return trash.y == floorT - 51;
   }
 
   isCollision(trash, player) {
+    if (trash.y >= 650) return false;
     if (
       trash.y > player.y &&
       (trash.x > player.x && trash.x + trash.width < player.x + player.width)
@@ -58,12 +58,13 @@ class Game {
   draw() {
     this.background.draw();
     this.player.draw();
-    fill('greenyellow');
+    fill("greenyellow");
     text("Score: " + score, 30, 50);
     push();
-    fill('red');
-    text("Missed: " + missed, 30, 100) 
+    fill("red");
+    text("Missed: " + missed, 30, 100);
     pop();
+
     if (frameCount > 300 && frameCount % 120 === 0) {
       this.trashes.push(new Trash());
     }
@@ -75,24 +76,20 @@ class Game {
         this.trashes.splice(index, 1);
         //console.log(score++);
       }
-    
+
       if (this.isFloorCollision(trash, this.floor)) {
         missed++;
-        this.trashes.splice(index, 1); // removes 1 elem
+        // this.trashes.splice(index, 1); // removes 1 elem
       }
-        // if (missed === 11){ // put this back in once game is ready. should this be 10 or 11?
-        //   noLoop();
-        // }
+      if (
+        this.isFloorCollision(trash, this.floor) &&
+        !this.isCollision(trash, this.player)
+      ) {
+        //   console.log ("this is a remaining floor collision");
+      }
+      // if (missed === 10){ // put this back in once game is ready. should this be 10 or 11?
+      //   noLoop();
+      // }
     });
   }
 }
-
-
-// dom, not in canvas itself yo:
-// const scoreSign = document.createElement("h2");
-// document.body.appendChild(scoreSign);
-// scoreSign.innerText = "Score: " + score;
-
-// const missedSign = document.createElement('h2');
-// document.body.appendChild(missedSign);
-// missedSign.innerText = "Missed: " + missed;
