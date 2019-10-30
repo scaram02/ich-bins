@@ -90,13 +90,12 @@ class Game {
       }
       if (missed === 3) {
         //10
-        push();
+        
         gameEnd = true;
         
         background(darkgray, 0, 0); // or could insert bg
         //background, add button, reset score window.location.reload orrrrr js score reset, empty array of trash, mode back
         text(this.bestScore, 465, 350); // replace this with restart button, fact about recycling
-        pop();
       }
 
 

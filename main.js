@@ -22,7 +22,7 @@ function setup() {
   textFont("Georgia");
   fill("darkgreen");
   bg = loadImage("assets/start.png");
-  bgTrenn = loadImage("assets/trennen.png");
+  bgTrenn = loadImage("assets/trennen4.png");
 }
 
 function draw() {
