@@ -1,22 +1,28 @@
-
 const game = new Game();
 // const player = new Player(300, 500);
-
-var mode; // does this or anything on this page with mode belong here
+let yaySound;
+let noooSound;
+let floorSound;
+let mode;
 
 function preload() {
   game.preload();
+  yaySound = loadSound('assets/yay.wav'); // sound. sound.play(); in place where sound played, bg music = sound.loop();
+  noooSound = loadSound('assets/no.wav');
+  floorSound = loadSound('assets/floor.wav');
 }
 
 function setup() {
-  createCanvas(1200, 700);
+  let gameCanvas = createCanvas(1200, 700);
+  gameCanvas.parent("gameCanvas");
   game.floor = 700;
   game.setup();
   mode = 0;
-  textSize(32); // does the text styling go here in main?
-  textFont('Georgia');
-  fill('darkgreen');
-  bg = loadImage('assets/start.png');
+  textSize(32);
+  textFont("Georgia");
+  fill("darkgreen");
+  bg = loadImage("assets/start.png");
+  bgTrenn = loadImage("assets/trennen.png");
 }
 
 function draw() {
@@ -24,20 +30,27 @@ function draw() {
 
   if (mode === 0) {
     // part of mode
-    background(bg);
-    text("Press enter to start!", 465, 680); 
-    
-}
+    background(bgTrenn);
+    text("Press enter to start!", 465, 680);
+  }
   if (mode === 1) {
+    // game.draw();
+    background(bg);
+    text("Press enter to play!", 465, 680);
+  }
+
+  if (mode === 2) {
     game.draw();
   }
 }
 
 function keyPressed() {
-  // does this belong in game?
   if (keyCode === ENTER) {
-    // mode
-    mode = 1; // mode
+    if (mode === 0) {
+      mode = 1; 
+    } else {
+      mode = 2;
+    }
   }
   if (keyCode === 39) {
     game.player.moveRight();
@@ -58,4 +71,3 @@ window.addEventListener(
   },
   false
 );
-

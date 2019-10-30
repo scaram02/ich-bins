@@ -1,5 +1,6 @@
-let score = 0; 
+let score = 0;
 let missed = 0;
+let gameEnd = false; 
 
 class Game {
   constructor() {
@@ -20,11 +21,11 @@ class Game {
   setup() {
     // console.log("game setup");
     this.player.setup();
+    this.endGame = loadImage("assets/end.png");
   }
 
   isFloorCollision(trash, floorT) {
     // console.log(trash.y, trash.height);
-
     return trash.y == floorT - 51;
   }
 
@@ -44,11 +45,11 @@ class Game {
           player.colors[(player.selectedColor + 2) % 3] === "black")
       ) {
         score += 1;
+        yaySound.play();
       } else {
         missed++;
+        noooSound.play();
       }
-      //   console.log("IN");
-      // console.log(player.colors[(player.selectedColor + 2) % 3]);
       return true;
     }
     //console.log("no collision, missed++");
@@ -65,7 +66,7 @@ class Game {
     text("Missed: " + missed, 30, 100);
     pop();
 
-    if (frameCount > 300 && frameCount % 120 === 0) {
+    if (frameCount > 120 && frameCount % 120 === 0) {
       this.trashes.push(new Trash());
     }
     this.trashes.forEach((trash, index) => {
@@ -85,10 +86,29 @@ class Game {
         this.isFloorCollision(trash, this.floor) &&
         !this.isCollision(trash, this.player)
       ) {
+        floorSound.play();
       }
-      if (missed === 10){ 
-        noLoop();
+      if (missed === 3) {
+        //10
+        push();
+        gameEnd = true;
+        
+        background(darkgray, 0, 0); // or could insert bg
+        //background, add button, reset score window.location.reload orrrrr js score reset, empty array of trash, mode back
+        text(this.bestScore, 465, 350); // replace this with restart button, fact about recycling
+        pop();
       }
-    });
+
+
+        if (
+          !localStorage.getItem("bestScore") ||
+          localStorage.getItem("bestScore") < score
+        ) {
+          localStorage.setItem("bestScore", score);
+        }
+        console.log(localStorage.getItem("bestScore"));
+        // text(this.bestScore, 200, 200); how and where do I display the highest score? this isn't working
+      })
+    };
   }
-}
+

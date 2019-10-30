@@ -33,6 +33,12 @@ class Trash {
 
   draw() {
     // console.log(this.img);
+    if(gameEnd){
+        noLoop();
+    }
+
+
+    
     if (this.y > 650) {
       this.y = 650;
     } else {

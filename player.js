@@ -18,6 +18,7 @@ class Player {
   preload() {
     for (var i = 0; i < 3; i++) {
       this.img[i] = loadImage("assets/bin" + i + ".png"); 
+      
     }
   }
   setup() {}
