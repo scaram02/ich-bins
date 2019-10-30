@@ -1,5 +1,4 @@
 const game = new Game();
-// const player = new Player(300, 500);
 let yaySound;
 let noooSound;
 let floorSound;
@@ -7,14 +6,14 @@ let mode;
 
 function preload() {
   game.preload();
-  yaySound = loadSound('assets/yay.wav'); // sound. sound.play(); in place where sound played, bg music = sound.loop();
-  noooSound = loadSound('assets/no.wav');
-  floorSound = loadSound('assets/floor.wav');
+  yaySound = loadSound("assets/yay.wav"); // sound. sound.play(); in place where sound played, bg music = sound.loop();
+  noooSound = loadSound("assets/no.wav");
+  floorSound = loadSound("assets/floor.wav");
 }
 
 function setup() {
   let gameCanvas = createCanvas(1200, 700);
-  gameCanvas.parent("gameCanvas");
+  gameCanvas.parent("gameCanvas"); 
   game.floor = 700;
   game.setup();
   mode = 0;
@@ -47,16 +46,24 @@ function draw() {
 function keyPressed() {
   if (keyCode === ENTER) {
     if (mode === 0) {
-      mode = 1; 
+      mode = 1;
     } else {
       mode = 2;
     }
   }
-  if (keyCode === 39) {
+  /*  if (keyCode === 39) {
     game.player.moveRight();
   } else if (keyCode === 37) {
     game.player.moveLeft();
   } else if (keyCode === 32) {
+    game.player.changeColor();
+  } */
+
+  if (keyIsDown(39)) {
+    game.player.moveRight();
+  } else if (keyIsDown(37)) {
+    game.player.moveLeft();
+  } else if (keyIsDown(32)) {
     game.player.changeColor();
   }
 }

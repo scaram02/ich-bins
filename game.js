@@ -106,7 +106,7 @@ class Game {
           localStorage.setItem("bestScore", score);
         }
         console.log(localStorage.getItem("bestScore"));
-        // text(this.bestScore, 200, 200); how and where do I display the highest score? this isn't working
+        // text(this.bestScore, 200, 200); how and where do I display the highest score? 
       })
     };
   }

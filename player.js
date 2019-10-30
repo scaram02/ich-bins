@@ -1,9 +1,4 @@
-// let img;
-// let side = 20; // ??
-// let x = 0;
-// let y = 0;
 var players = [];
-// var colors = [];
 
 class Player {
   constructor() {
@@ -17,8 +12,7 @@ class Player {
 
   preload() {
     for (var i = 0; i < 3; i++) {
-      this.img[i] = loadImage("assets/bin" + i + ".png"); 
-      
+      this.img[i] = loadImage("assets/bin" + i + ".png");
     }
   }
   setup() {}
