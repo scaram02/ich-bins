@@ -39,24 +39,3 @@ class Trash {
   }
 }
 
-// let trashes = []; // ? change this in all places it says img?
-
-// class Trash {
-//     constructor() {
-//         this.y = height;
-//         this.x = random(width, 250); // change 250 to 0
-
-//         this.width = 250; // change these obviously
-//         this.height = 250;
-
-//     }
-
-// preload(){
-//     this.trash = loadImage('assets/shoe.png');
-// }
-
-// draw(){
-//     image(this.trash, this.x, this.y, this.width, this.height);
-//     this.y += 4;
-//     }
-// }
