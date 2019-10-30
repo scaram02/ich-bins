@@ -15,7 +15,8 @@ function setup() {
   mode = 0;
   textSize(32); // does the text styling go here in main?
   textFont('Georgia');
-  fill('navy');
+  fill('darkgreen');
+  bg = loadImage('assets/start.png');
 }
 
 function draw() {
@@ -23,8 +24,10 @@ function draw() {
 
   if (mode === 0) {
     // part of mode
-    text("Press enter to start!", 400, 350); // xy pos Do I want to center this based on real screen or canvas center? // how do I make this responsive to window height
-  }
+    background(bg);
+    text("Press enter to start!", 465, 680); 
+    
+}
   if (mode === 1) {
     game.draw();
   }

@@ -1,4 +1,4 @@
-let score = 0; // can I make into this.score and move into game constructor? asking for a friend
+let score = 0; 
 let missed = 0;
 
 class Game {
@@ -85,11 +85,10 @@ class Game {
         this.isFloorCollision(trash, this.floor) &&
         !this.isCollision(trash, this.player)
       ) {
-        //   console.log ("this is a remaining floor collision");
       }
-      // if (missed === 10){ // put this back in once game is ready. should this be 10 or 11?
-      //   noLoop();
-      // }
+      if (missed === 10){ 
+        noLoop();
+      }
     });
   }
 }
