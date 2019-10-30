@@ -1,3 +1,4 @@
+
 const game = new Game();
 // const player = new Player(300, 500);
 
@@ -12,6 +13,9 @@ function setup() {
   game.floor = 700;
   game.setup();
   mode = 0;
+  textSize(32); // does the text styling go here in main?
+  textFont('Georgia');
+  fill('navy');
 }
 
 function draw() {
@@ -19,7 +23,7 @@ function draw() {
 
   if (mode === 0) {
     // part of mode
-    text("Press enter to start!", 500, 300); // xy pos
+    text("Press enter to start!", 400, 350); // xy pos Do I want to center this based on real screen or canvas center? // how do I make this responsive to window height
   }
   if (mode === 1) {
     game.draw();
@@ -51,3 +55,4 @@ window.addEventListener(
   },
   false
 );
+

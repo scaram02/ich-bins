@@ -27,7 +27,7 @@ class Player {
   }
 
   moveRight() {
-    if (this.x < 900) {
+    if (this.x < 1100) {
       this.x += 50;
     }
   }
