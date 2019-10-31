@@ -4,18 +4,17 @@ let noooSound;
 let floorSound;
 let mode;
 
-
 function preload() {
   game.preload();
   yaySound = loadSound("assets/yay.wav"); // sound. sound.play(); in place where sound played, bg music = sound.loop();
   noooSound = loadSound("assets/no.wav");
   floorSound = loadSound("assets/floor.wav");
-  themeSong = loadSound("assets/bugdom.mp3"); 
+  themeSong = loadSound("assets/bugdom.mp3");
 }
 
 function setup() {
   let gameCanvas = createCanvas(1000, 700); //1200
-  gameCanvas.parent("gameCanvas"); 
+  gameCanvas.parent("gameCanvas");
   game.floor = 700;
   game.setup();
   mode = 0;
@@ -24,10 +23,8 @@ function setup() {
   fill("darkgreen");
   bg = loadImage("assets/start.png");
   bgTrenn = loadImage("assets/trennen4.png");
-  
-  
-  
-//   themeSong.loop(); this works here! but make so only starts on 2
+
+  //   themeSong.loop(); this works here! but make so only starts on 2
 }
 
 function draw() {
@@ -46,7 +43,13 @@ function draw() {
 
   if (mode === 2) {
     game.draw();
-    
+  }
+  if (keyIsDown(39)) {
+    game.player.moveRight();
+  } else if (keyIsDown(37)) {
+    game.player.moveLeft();
+  } else if (keyIsDown(32)) {
+    game.player.changeColor();
   }
 }
 
@@ -58,7 +61,8 @@ function keyPressed() {
       mode = 2;
     }
   }
-  /*  if (keyCode === 39) {
+}
+/*  if (keyCode === 39) {
     game.player.moveRight();
   } else if (keyCode === 37) {
     game.player.moveLeft();
@@ -66,21 +70,12 @@ function keyPressed() {
     game.player.changeColor();
   } */
 
-  if (keyIsDown(39)) {
-    game.player.moveRight();
-  } else if (keyIsDown(37)) {
-    game.player.moveLeft();
-  } else if (keyIsDown(32)) {
-    game.player.changeColor();
-  }
-
 //   if ((gameEnd === true) && keyPressed(ENTER)){
 //       score = 0;
 //       missed = 0;
 //       mode = 1
 //   }
-}
-
+// }
 
 window.addEventListener(
   "keydown",
