@@ -93,7 +93,8 @@ class Game {
       ) {
         floorSound.play();
       }
-      if (missed === 3) {
+ 
+    if (missed === 3) {
         //10
         gameEnd = true; // could add sound
         background("black");
@@ -102,10 +103,10 @@ class Game {
           "Your best score: " + localStorage.getItem("bestScore");
         push();
         textAlign(CENTER, CENTER); 
-        text(yourScore, 325, 200, 370);
+        text(yourScore, 315, 200, 370);
         textAlign(CENTER, CENTER); 
-        text(theBestScore, 305, 430, 410);
-        text("Press enter to play again!", 520, 600);
+        text(theBestScore, 290, 430, 410); // 305, 430, 410
+        text("Press enter to play again!", 500, 600);
         pop();
         noLoop();
       }
