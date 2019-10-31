@@ -31,11 +31,6 @@ class Trash {
   setup() {}
 
   draw() {
-    if(gameEnd){
-        noLoop();
-    }
-
-
 
     if (this.y > 650) {
       this.y = 650;

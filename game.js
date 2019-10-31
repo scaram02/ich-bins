@@ -1,6 +1,6 @@
 let score = 0;
 let missed = 0;
-let gameEnd = false; 
+let gameEnd = false;
 
 class Game {
   constructor() {
@@ -10,7 +10,6 @@ class Game {
     // this.floor;
     this.trashes = [];
   }
-
 
   preload() {
     // console.log("game preload");
@@ -34,7 +33,6 @@ class Game {
       trash.y > player.y &&
       (trash.x > player.x && trash.x + trash.width < player.x + player.width)
     ) {
-      //console.log("categ ?", trash.randomTrash.category,player.colors[(player.selectedColor + 2) % 3]);
       if (
         (trash.randomTrash.category === "bio" &&
           player.colors[(player.selectedColor + 2) % 3] === "brown") ||
@@ -63,7 +61,6 @@ class Game {
     fill("red");
     text("Missed: " + missed, 30, 100);
     pop();
-    
 
     if (frameCount > 120 && frameCount % 120 === 0) {
       this.trashes.push(new Trash());
@@ -74,12 +71,11 @@ class Game {
 
       if (this.isCollision(trash, this.player)) {
         this.trashes.splice(index, 1);
-        
       }
 
       if (this.isFloorCollision(trash, this.floor)) {
         missed++;
-        // this.trashes.splice(index, 1); // removes 1 elem
+        // removes 1 elem
       }
       if (
         this.isFloorCollision(trash, this.floor) &&
@@ -89,31 +85,30 @@ class Game {
       }
       if (missed === 3) {
         //10
-        
-        gameEnd = true; // could add wah wah sound
-        background('dimgray'); 
+        gameEnd = true; // could add sound
+        background("dimgray");
         let yourScore = "You trashed your park! Your score: " + score;
-        let theBestScore = "Your best score: " + localStorage.getItem("bestScore");
+        let theBestScore =
+          "Your best score: " + localStorage.getItem("bestScore");
         push();
-        textAlign(CENTER, CENTER);
-        text(yourScore, 325, 200, 370);  
-        textAlign(CENTER, CENTER);
+        textAlign(CENTER, CENTER); // make universal
+        text(yourScore, 325, 200, 370);
+        textAlign(CENTER, CENTER); // make universal
         text(theBestScore, 305, 330, 410);
-        text ('Press enter to play again!', 520, 600)
+        text("Press enter to play again!", 520, 600);
         pop();
+        noLoop();
         //background, add button, reset score window.location.reload orrrrr js score reset, empty array of trash, mode back
-        
       }
 
-    //   local high score storage
-        if (
-          !localStorage.getItem("bestScore") ||
-          localStorage.getItem("bestScore") < score
-        ) {
-          localStorage.setItem("bestScore", score);
-        }
-        console.log(localStorage.getItem("bestScore"));
-      })
-    };
+      //   local high score storage
+      if (
+        !localStorage.getItem("bestScore") ||
+        localStorage.getItem("bestScore") < score
+      ) {
+        localStorage.setItem("bestScore", score);
+      }
+      console.log(localStorage.getItem("bestScore"));
+    });
   }
-
+}

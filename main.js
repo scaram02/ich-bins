@@ -24,7 +24,7 @@ function setup() {
   bg = loadImage("assets/start.png");
   bgTrenn = loadImage("assets/trennen4.png");
 
-  //   themeSong.loop(); this works here! but make so only starts on 2
+  // themeSong.loop();  // this works here! but make so only starts on 2, ends when missed
 }
 
 function draw() {
@@ -43,25 +43,39 @@ function draw() {
 
   if (mode === 2) {
     game.draw();
+    console.log("hi");
   }
+
   if (keyIsDown(39)) {
     game.player.moveRight();
   } else if (keyIsDown(37)) {
     game.player.moveLeft();
-  } else if (keyIsDown(32)) {
-    game.player.changeColor();
   }
 }
 
+// CORRECT VERSION WITHOUT END
 function keyPressed() {
   if (keyCode === ENTER) {
     if (mode === 0) {
       mode = 1;
-    } else {
+      draw();
+    } else if (mode == 1) {
       mode = 2;
+      draw();
+    } else if (gameEnd) {
+      mode = 0;
+      score = 0;
+      missed = 0;
+      game.trashes = [];
+      loop();
+
+      draw();
     }
+  } else if (keyCode === 32) {
+    game.player.changeColor();
   }
 }
+
 /*  if (keyCode === 39) {
     game.player.moveRight();
   } else if (keyCode === 37) {
@@ -69,13 +83,6 @@ function keyPressed() {
   } else if (keyCode === 32) {
     game.player.changeColor();
   } */
-
-//   if ((gameEnd === true) && keyPressed(ENTER)){
-//       score = 0;
-//       missed = 0;
-//       mode = 1
-//   }
-// }
 
 window.addEventListener(
   "keydown",
