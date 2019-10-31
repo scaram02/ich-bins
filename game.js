@@ -20,6 +20,8 @@ class Game {
   setup() {
     // console.log("game setup");
     this.player.setup();
+    
+   
   }
 
   isFloorCollision(trash, floorT) {
@@ -62,6 +64,7 @@ class Game {
     text("Missed: " + missed, 30, 100);
     pop();
 
+   
     if (frameCount > 120 && frameCount % 120 === 0) {
       this.trashes.push(new Trash());
     }
