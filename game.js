@@ -21,7 +21,7 @@ class Game {
     // console.log("game setup");
     this.player.setup();
     // image(this.icons, 100, 300, 100, 300);
-    
+    this.bgearth = loadImage("assets/earth.png");
    
   }
 
@@ -58,12 +58,18 @@ class Game {
   draw() {
     this.background.draw();
     this.player.draw();
-    fill("greenyellow");
+    push();
+    fill('white');
+    noStroke();
+    rect(15, 15, 200, 100, 20);
+    pop();
+    fill("forestgreen");
     text("Score: " + score, 30, 50);
     push();
     fill("red");
     text("Missed: " + missed, 30, 100);
     pop();
+   
 
    
     if (frameCount > 120 && frameCount % 120 === 0) {
@@ -90,19 +96,18 @@ class Game {
       if (missed === 3) {
         //10
         gameEnd = true; // could add sound
-        background("dimgray");
+        background("black");
         let yourScore = "You trashed your park! Your score: " + score;
         let theBestScore =
           "Your best score: " + localStorage.getItem("bestScore");
         push();
-        textAlign(CENTER, CENTER); // make universal
+        textAlign(CENTER, CENTER); 
         text(yourScore, 325, 200, 370);
-        textAlign(CENTER, CENTER); // make universal
-        text(theBestScore, 305, 330, 410);
+        textAlign(CENTER, CENTER); 
+        text(theBestScore, 305, 430, 410);
         text("Press enter to play again!", 520, 600);
         pop();
         noLoop();
-        //background, add button, reset score window.location.reload orrrrr js score reset, empty array of trash, mode back
       }
 
       //   local high score storage

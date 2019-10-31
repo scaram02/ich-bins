@@ -22,29 +22,16 @@ class Player {
     image(this.img[this.selectedColor], this.x, 550, 100, 150); //  make x location random later
   }
 
-//   moveRight() {
-//     if (this.x < 900) {
-//       this.x += 50;
-//     }
-//   }
-//   moveLeft() {
-//     if (this.x > 0) {
-//       this.x -= 50;
-//     }
-//   }
-
-
-
 
    moveRight() {
      if (this.x < 900) {
-       this.x += 4 * this.velocity; //4
+       this.x += 4 * this.velocity; 
        this.velocity += 0.02;      
      }
    }
    moveLeft() {
      if (this.x > 0) {
-       this.x -= 2 * this.velocity; //4
+       this.x -= 2 * this.velocity; 
         this.velocity += 0.02;      
      } else {
        this.velocity = 1;
