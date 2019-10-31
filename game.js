@@ -93,9 +93,28 @@ class Game {
         floorSound.play();
       }
  
-    if (missed === 10) {
+    // if (missed === 10) {
         
-        gameEnd = true; // could add sound
+    //     gameEnd = true; // could add sound
+    //     background("black");
+    //     let yourScore = "Your score: "  + score;
+    //     let theBestScore =
+    //       " Your best score: " + localStorage.getItem("bestScore");
+    //     let ohTrashed = "You trashed your park!";
+    //     push();
+    //     textAlign(CENTER, CENTER); 
+    //     text(yourScore, 310, 350, 370);
+    //     text(ohTrashed, 250, 150, 500);
+    //     textAlign(CENTER, CENTER); 
+    //     text(theBestScore, 130, 380, 730); // 305, 430, 410
+    //     text("Press enter to play again!", 500, 600);
+    //     pop();
+    //     themeSong.stop();
+    //     noLoop();
+    //   }
+    if (missed === 10) {
+        //10
+      gameEnd = true; // could add sound
         background("black");
         let yourScore = "Your score: "  + score;
         let theBestScore =
@@ -111,7 +130,6 @@ class Game {
         pop();
         noLoop();
       }
-
       //   local high score storage
       if (
         !localStorage.getItem("bestScore") ||

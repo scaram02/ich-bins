@@ -12,16 +12,16 @@ let object = [
 
 class Trash {
   constructor() {
-    this.x = Math.random() * 950; //1000
+    this.x = Math.random() * 950; 
     this.y = 0;
-    this.width = 49; //40
+    this.width = 49; 
     this.height = 49;
 
-    this.randomTrash = object[Math.floor(Math.random() * object.length)]; // random from object
+    this.randomTrash = object[Math.floor(Math.random() * object.length)]; 
     this.name = this.randomTrash.name;
     this.category = this.randomTrash.category;
     this.imgUrl = this.randomTrash.imgURL;
-    // console.log(this.category);
+    
   }
 
   preload() {

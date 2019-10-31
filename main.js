@@ -78,13 +78,6 @@ function keyPressed() {
   }
 }
 
-/*  if (keyCode === 39) {
-    game.player.moveRight();
-  } else if (keyCode === 37) {
-    game.player.moveLeft();
-  } else if (keyCode === 32) {
-    game.player.changeColor();
-  } */
 
   function playsound() 
   {

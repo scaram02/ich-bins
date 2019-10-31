@@ -19,7 +19,7 @@ class Player {
   setup() {}
 
   draw() {
-    image(this.img[this.selectedColor], this.x, 550, 100, 150); //  make x location random later
+    image(this.img[this.selectedColor], this.x, 550, 100, 150); //  could make x location random later
   }
 
 

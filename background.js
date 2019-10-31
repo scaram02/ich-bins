@@ -2,7 +2,6 @@ let icons;
 
 class Background {
     constructor() {
-       //  console.log("le background constructor");
         this.xPark = 0; 
     }
 
