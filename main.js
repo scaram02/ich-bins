@@ -25,7 +25,7 @@ function setup() {
   bg = loadImage("assets/start.png");
   bgTrenn = loadImage("assets/trennen4.png");
 
-  themeSong.loop();  // this works here! but make so only starts on 2, ends when missed
+  themeSong.loop();  
   themeSong.stop();
 }
 
@@ -34,6 +34,7 @@ function draw() {
 
   if (mode === 0) {
     background(bgTrenn);
+    fill('darkgreen');
     text("Press enter to start!", 365, 680);
   }
   if (mode === 1) {
@@ -44,7 +45,6 @@ function draw() {
   if (mode === 2) {
     game.draw();
     playsound();
-    console.log("hi");
   }
 
   if (keyIsDown(39)) {
