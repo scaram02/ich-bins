@@ -18,7 +18,7 @@ class Background {
 
     draw() {
         image(this.bgPark, this.xPark, 0, width);
-
+        
 
     }
 }

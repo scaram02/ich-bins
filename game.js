@@ -4,13 +4,13 @@ let gameEnd = false;
 
 class Game {
   constructor() {
-    // console.log('game constructor');
     this.background = new Background();
     this.player = new Player();
     this.trash = new Trash();
     // this.floor;
     this.trashes = [];
   }
+
 
   preload() {
     // console.log("game preload");
@@ -21,12 +21,11 @@ class Game {
   setup() {
     // console.log("game setup");
     this.player.setup();
-    this.endGame = loadImage("assets/end.png");
   }
 
   isFloorCollision(trash, floorT) {
     // console.log(trash.y, trash.height);
-    return trash.y == floorT - 51;
+    return trash.y == floorT - 51; // might need to change now
   }
 
   isCollision(trash, player) {
@@ -52,7 +51,6 @@ class Game {
       }
       return true;
     }
-    //console.log("no collision, missed++");
     return false;
   }
 
@@ -65,6 +63,7 @@ class Game {
     fill("red");
     text("Missed: " + missed, 30, 100);
     pop();
+    
 
     if (frameCount > 120 && frameCount % 120 === 0) {
       this.trashes.push(new Trash());
@@ -75,7 +74,7 @@ class Game {
 
       if (this.isCollision(trash, this.player)) {
         this.trashes.splice(index, 1);
-        //console.log(score++);
+        
       }
 
       if (this.isFloorCollision(trash, this.floor)) {
@@ -91,14 +90,22 @@ class Game {
       if (missed === 3) {
         //10
         
-        gameEnd = true;
-        
-        background(darkgray, 0, 0); // or could insert bg
+        gameEnd = true; // could add wah wah sound
+        background('dimgray'); 
+        let yourScore = "You trashed your park! Your score: " + score;
+        let theBestScore = "Your best score: " + localStorage.getItem("bestScore");
+        push();
+        textAlign(CENTER, CENTER);
+        text(yourScore, 325, 200, 370);  
+        textAlign(CENTER, CENTER);
+        text(theBestScore, 305, 330, 410);
+        text ('Press enter to play again!', 520, 600)
+        pop();
         //background, add button, reset score window.location.reload orrrrr js score reset, empty array of trash, mode back
-        text(this.bestScore, 465, 350); // replace this with restart button, fact about recycling
+        
       }
 
-
+    //   local high score storage
         if (
           !localStorage.getItem("bestScore") ||
           localStorage.getItem("bestScore") < score
@@ -106,7 +113,6 @@ class Game {
           localStorage.setItem("bestScore", score);
         }
         console.log(localStorage.getItem("bestScore"));
-        // text(this.bestScore, 200, 200); how and where do I display the highest score? 
       })
     };
   }

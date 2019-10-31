@@ -12,10 +12,10 @@ let object = [
 
 class Trash {
   constructor() {
-    this.x = Math.random() * 1000;
+    this.x = Math.random() * 950; //1000
     this.y = 0;
-    this.width = 40;
-    this.height = 40;
+    this.width = 49; //40
+    this.height = 49;
 
     this.randomTrash = object[Math.floor(Math.random() * object.length)]; // random from object
     this.name = this.randomTrash.name;
@@ -25,20 +25,18 @@ class Trash {
   }
 
   preload() {
-    // console.log("img", this.imgUrl);
     this.img = loadImage(this.imgUrl);
   }
 
   setup() {}
 
   draw() {
-    // console.log(this.img);
     if(gameEnd){
         noLoop();
     }
 
 
-    
+
     if (this.y > 650) {
       this.y = 650;
     } else {
