@@ -1,5 +1,6 @@
 let score = 0;
 let missed = 0;
+
 let gameEnd = false;
 
 class Game {
@@ -7,19 +8,19 @@ class Game {
     this.background = new Background();
     this.player = new Player();
     this.trash = new Trash();
-    // this.floor;
     this.trashes = [];
   }
 
   preload() {
-    // console.log("game preload");
     this.background.preload();
     this.player.preload();
+    // this.icons = loadImage('assets/icons.png');
   }
 
   setup() {
     // console.log("game setup");
     this.player.setup();
+    // image(this.icons, 100, 300, 100, 300);
     
    
   }

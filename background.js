@@ -1,3 +1,5 @@
+let icons;
+
 class Background {
     constructor() {
        //  console.log("le background constructor");
@@ -8,7 +10,6 @@ class Background {
 
 
     preload() {
-      //  console.log('bg preload yo')
         this.bgPark = loadImage('assets/park.png');
        
 
