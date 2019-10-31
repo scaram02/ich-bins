@@ -21,7 +21,6 @@ class Game {
     // console.log("game setup");
     this.player.setup();
     // image(this.icons, 100, 300, 100, 300);
-    this.bgearth = loadImage("assets/earth.png");
    
   }
 
@@ -94,18 +93,20 @@ class Game {
         floorSound.play();
       }
  
-    if (missed === 3) {
-        //10
+    if (missed === 10) {
+        
         gameEnd = true; // could add sound
         background("black");
-        let yourScore = "You trashed your park! Your score: " + score;
+        let yourScore = "Your score: "  + score;
         let theBestScore =
-          "Your best score: " + localStorage.getItem("bestScore");
+          " Your best score: " + localStorage.getItem("bestScore");
+        let ohTrashed = "You trashed your park!";
         push();
         textAlign(CENTER, CENTER); 
-        text(yourScore, 315, 200, 370);
+        text(yourScore, 310, 350, 370);
+        text(ohTrashed, 250, 150, 500);
         textAlign(CENTER, CENTER); 
-        text(theBestScore, 290, 430, 410); // 305, 430, 410
+        text(theBestScore, 130, 380, 730); // 305, 430, 410
         text("Press enter to play again!", 500, 600);
         pop();
         noLoop();
